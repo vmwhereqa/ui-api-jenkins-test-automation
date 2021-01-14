@@ -1,0 +1,37 @@
+{
+  "name": "scoober-test-automation-challenge",
+  "version": "1.0.0",
+  "description": "UI Automation framework for lieferando using  webdriverIO - nodejs",
+  "main": "index.js",
+  "author": "Vinod Muralidharan (vinodvijay.m@gmail.com)",
+  "license": "MIT",
+  "scripts": {
+    "lint": "eslint .",
+    "lint:fix": "yarn eslint . --fix",
+    "test": "rimraf output/* && mkdir -p ./output/report && mkdir -p ./output/jsonReportDir && yarn wdio"
+  },
+  "dependencies": {
+    "@wdio/cli": "^6.11.3",
+    "@wdio/cucumber-framework": "^6.11.1",
+    "@wdio/local-runner": "^6.11.3",
+    "@wdio/selenium-standalone-service": "^6.11.0",
+    "@wdio/sync": "^6.11.0",
+    "chai": "^4.2.0",
+    "cucumber-html-reporter": "^5.3.0",
+    "eslint-plugin-chai-friendly": "^0.6.0",
+    "wdio-cucumberjs-json-reporter": "^2.0.2"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.12.10",
+    "@babel/core": "^7.12.10",
+    "@babel/preset-env": "^7.12.11",
+    "@babel/register": "^7.12.10",
+    "@wdio/spec-reporter": "^6.11.0",
+    "chromedriver": "^87.0.5",
+    "eslint": "^7.17.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-webdriverio": "^1.0.1",
+    "wdio-chromedriver-service": "^6.0.4"
+  }
+}
