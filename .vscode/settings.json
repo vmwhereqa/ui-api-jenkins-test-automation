@@ -1,0 +1,14 @@
+{
+    "cSpell.words": [
+        "immo",
+        "wdio"
+    ],
+    "editor.codeActionsOnSave": {
+        "source.fixAll.eslint": true,
+    },
+    "eslint.format.enable": true,
+    "cucumberautocomplete.steps": [
+        "src/step_definitions/**.js",
+    ],
+    // "cucumberautocomplete.strictGherkinCompletion": true
+}

@@ -1,58 +1,29 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { Given, Then, When } from 'cucumber';
 import { expect } from 'chai';
-import { homePage, restaurantsPage, AcceptConsentIfVisible } from '../pages';
+import { loginPage, securePage } from '../pages';
 
-Given('Lieferando home page is launched', () => {
-  homePage.openHomePage();
+Given('I reach login page', () => {
+  loginPage.openLoginPage();
 });
 
-Given('I search for restaurants near {string}', function (address) {
-  homePage.openHomePage();
-  AcceptConsentIfVisible();
-  homePage.searchRestaurants(address);
-});
-
-When('I filter restaurants with {string} as {string}', function (
-  filterType,
-  option,
+When('I login with username as {string} and password as {string}', function (
+  username,
+  password,
 ) {
-  if (filterType === 'cuisine') {
-    restaurantsPage.selectCuisine(option);
-  } else {
-    restaurantsPage.selectDeliveryCost(option);
-  }
+  loginPage.login(username, password);
 });
 
 Then(
-  'Displayed restaurants delivery costs should be {int} € or less',
-  function (deliveryCost) {
-    const costs = restaurantsPage.getDeliveryCost();
-
-    const isPriceLessThanEqualToOne = (price) => {
-      if (price < deliveryCost || price === deliveryCost) {
-        return true;
-      }
-      return false;
-    };
-
-    costs.forEach((cost) => {
-      if (cost.includes('€')) {
-        const price = cost.split(' ')[0];
-        const convertedPrice = parseFloat(price.replace(',', '.'));
-        expect(isPriceLessThanEqualToOne(convertedPrice)).to.be.true;
-      } else {
-        expect('FREE').to.equal(cost);
-      }
-    });
+  'Error Message: {string} should be displayed',
+  function (msg) {
+    expect(loginPage.getLoginErrorMessage()).to.contain(msg);
   },
 );
 
-Then('Only restaurants with {word} cuisine should be displayed', function (
-  cuisine,
-) {
-  const cuisinesText = restaurantsPage.getCuisineDetails();
-  cuisinesText.forEach((cuisineText) => {
-    expect(cuisineText).to.contain(cuisine);
-  });
-});
+Then(
+  'Success Message: {string} should be displayed',
+  function (msg) {
+    expect(securePage.getLoginSuccessMessage()).to.contain(msg);
+  },
+);
