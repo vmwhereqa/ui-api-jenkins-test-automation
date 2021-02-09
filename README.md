@@ -1,6 +1,6 @@
-# UI Automation - lieferando App
+# ui-api-jenkins-test-automation
 
-This project will be used to run UI Automation tests for lieferando App. Build based on Webdriverio, selenium and NodeJs
+UI and API Testing using webdriverio, sync-request and chai
 
 ## Pre - requisite:
 
@@ -35,7 +35,7 @@ To run all the scripts just run:
 
 To run only specific testcase use tags
 
-> yarn test  --cucumberOpts.tagExpression='@cuisine'
+> yarn test  --cucumberOpts.tagExpression='@success'
 
 
 
